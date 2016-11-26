@@ -10,8 +10,6 @@ module.exports.loop = function () {
                 console.log('Clearing non-existing creep memory:', name);
             }
         }
-
-
     
     roleHarvester.create(Game); 
     roleUpgrader.create(Game);
