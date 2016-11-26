@@ -27,8 +27,8 @@ var roleBuilder = {
 	},
     create: function(game){
         var creeps = _.filter(game.creeps,(creep)=>creep.memory.role === 'builder');
-         var constructionSites = creep.room.find(FIND_CONSTRUCTION_SITES);
-	    if(creeps.length < 3 && constructionSites.length > 1){
+       //TODO find way to check for structures without using creeps
+	    if(creeps.length < 3){
 	        game.spawns.Spawn1.createCreep([MOVE,MOVE, CARRY, WORK],{role:'builder'})
 	    }
     }
