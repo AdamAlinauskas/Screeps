@@ -26,10 +26,10 @@ var roleUpgrader = {
 	},
 	
 	create: function(game){
-	   //var upgraders = _.filter(game.creeps,(creep)=>creep.memory.role === 'upgrader');
-	   // if(upgraders.length < 6){
-	   //     game.spawns.Spawn1.createCreep([MOVE, CARRY, WORK],{role:'upgrader'})
-	   // }
+	   var upgraders = _.filter(game.creeps,(creep)=>creep.memory.role === 'upgrader');
+	   if(upgraders.length < 3){
+	       game.spawns.Spawn1.createCreep([MOVE, CARRY, WORK],{role:'upgrader'})
+	   }
 	}
 };
 
