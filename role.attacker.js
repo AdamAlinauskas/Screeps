@@ -1,6 +1,7 @@
 var roleBuilder = {
    run: function(creep) {
-        var enemies= creep.room.find(Game.HOSTILE_CREEPS);
+        var enemies= creep.room.find(FIND_HOSTILE_CREEPS);
+          console.log("enmies at the gate"+ enemies.length)
         if(enemies.length>0){
             creep.say('attack')
             creep.moveTo(enemies[0]);
@@ -10,9 +11,9 @@ var roleBuilder = {
     create: function(game){
         var creeps = _.filter(game.creeps,(creep)=>creep.memory.role === 'attacker');
        //TODO find way to check for structures without using creeps
-	    if(creeps.length < 2){
+	    if(creeps.length < 4){
             console.log('create attacker')
-	        game.spawns.Spawn1.createCreep([TOUGH,ATTACK,MOVE],{role:'attacker'})
+	        game.spawns.Spawn1.createCreep([TOUGH,ATTACK,ATTACK,MOVE,MOVE],{role:'attacker'})
 	    }
     }
     
