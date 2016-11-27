@@ -13,10 +13,9 @@ module.exports.loop = function () {
         }
     
     roleAttacker.create(Game);
-    roleHarvester.create(Game); 
-    roleUpgrader.create(Game);
     roleBuilder.create(Game);
-
+    roleUpgrader.create(Game);
+    roleHarvester.create(Game);
     
 
      for(var name in Game.creeps) {
