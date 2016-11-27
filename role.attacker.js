@@ -10,8 +10,8 @@ var roleBuilder = {
 	},
     create: function(game){
         var creeps = _.filter(game.creeps,(creep)=>creep.memory.role === 'attacker');
-       //TODO find way to check for structures without using creeps
-	    if(creeps.length < 4){
+       //use harvesters to look for enemies and only create if you have atackers...   
+	    if(creeps.length < 0){
             console.log('create attacker')
 	        game.spawns.Spawn1.createCreep([TOUGH,ATTACK,ATTACK,MOVE,MOVE],{role:'attacker'})
 	    }

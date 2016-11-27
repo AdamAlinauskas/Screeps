@@ -17,6 +17,9 @@ var roleHarvester = {
                 creep.moveTo(Game.spawns['Spawn1']);
             }
         }
+        else if(Game.spawns['Spawn1'].energy == Game.spawns['Spawn1'].energyCapacity){
+            //Spawn's enerty is maxed out put harvester to use and upgrade the conrollers
+        }
       
 	},
 		
