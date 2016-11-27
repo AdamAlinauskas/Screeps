@@ -8,7 +8,7 @@ var roleBuilder = {
         var creeps = _.filter(game.creeps,(creep)=>creep.memory.role === 'attacker');
        //TODO find way to check for structures without using creeps
 	    if(creeps.length < 2){
-	        game.spawns.Spawn1.createCreep([TOUGH, ATTACK, ATTACK,MOVE,MOVE],{role:'attacker'})
+	        game.spawns.Spawn1.createCreep([TOUGH,ATTACK,MOVE],{role:'attacker'})
 	    }
     }
     
