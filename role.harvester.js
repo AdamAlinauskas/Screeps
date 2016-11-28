@@ -16,6 +16,7 @@ var roleHarvester = {
         }
 		//else if(Game.spawns['Spawn1'].energy < Game.spawns['Spawn1'].energyCapacity) {
             else{
+                
             var targets = creep.room.find(FIND_STRUCTURES, {
                     filter: (structure) => {
                         return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) &&
@@ -35,6 +36,8 @@ var roleHarvester = {
                         return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN);
                     }
             }).every(function(structure){return structure.energy == structure.energyCapacity});
+
+            console.log('max energy' + atMaxEnergy);
         
         if(atMaxEnergy){
             //Spawn's enerty is maxed out put harvester to use and upgrade the conrollers
@@ -46,7 +49,7 @@ var roleHarvester = {
 		
 	create: function(game){
 	   var upgraders = _.filter(game.creeps,(creep)=>creep.memory.role === 'harvester');
-	    if(upgraders.length < 10){
+	    if(upgraders.length < 4){
 	        game.spawns.Spawn1.createCreep([MOVE, CARRY, WORK],{role:'harvester'})
 	    }
 	}

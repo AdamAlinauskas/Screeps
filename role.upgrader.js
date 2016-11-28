@@ -32,7 +32,7 @@ var me = this;
 	this.create = function(game){
 	   var upgraders = _.filter(game.creeps,(creep)=>creep.memory.role === 'upgrader');
 	   if(upgraders.length < 10){
-	       game.spawns.Spawn1.createCreep([MOVE,MOVE,MOVE,MOVE, CARRY,CARRY,WORK, WORK],{role:'upgrader'})
+	       game.spawns.Spawn1.createCreep([MOVE,CARRY,WORK],{role:'upgrader'})
 	   }
 	}
 }();
