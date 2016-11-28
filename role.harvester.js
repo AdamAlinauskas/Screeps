@@ -30,14 +30,13 @@ var roleHarvester = {
             }
         }
 
-        var targets = creep.room.find(FIND_STRUCTURES, {
+        var atMaxEnergy = creep.room.find(FIND_STRUCTURES, {
                     filter: (structure) => {
-                        return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) &&
-                            structure.energy < structure.energyCapacity;
+                        return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN);
                     }
-            });
+            }).every(function(structure){return structure.energy == structure.energyCapacity});
         
-        if(Game.spawns['Spawn1'].energy == Game.spawns['Spawn1'].energyCapacity && targets.length == 0){
+        if(atMaxEnergy){
             //Spawn's enerty is maxed out put harvester to use and upgrade the conrollers
             creep.say('Swiching to upgrading')
             roleUpgrader.upgrade(creep);
