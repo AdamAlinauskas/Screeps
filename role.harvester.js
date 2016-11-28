@@ -14,13 +14,16 @@ var roleHarvester = {
                 creep.moveTo(source);
             }
         }
-		else if(Game.spawns['Spawn1'].energy < Game.spawns['Spawn1'].energyCapacity) {
+		//else if(Game.spawns['Spawn1'].energy < Game.spawns['Spawn1'].energyCapacity) {
+            else{
             if(creep.transfer(Game.spawns['Spawn1'], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(Game.spawns['Spawn1']);
             }
         }
-        else if(Game.spawns['Spawn1'].energy == Game.spawns['Spawn1'].energyCapacity){
+        
+        if(Game.spawns['Spawn1'].energy == Game.spawns['Spawn1'].energyCapacity){
             //Spawn's enerty is maxed out put harvester to use and upgrade the conrollers
+            creep.say('Swiching to upgrading')
             roleUpgrader.upgrade(creep);
         }
       
