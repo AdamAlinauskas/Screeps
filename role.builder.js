@@ -16,6 +16,10 @@ var roleBuilder = {
                     creep.moveTo(targets[0]);
                 }
             }
+			else{
+				//kill the creep if there are no more constuction sites.
+				creep.suicide();
+			}
 	    }
 	    else {
 	        var sources = creep.room.find(FIND_SOURCES);
