@@ -16,12 +16,28 @@ var roleHarvester = {
         }
 		//else if(Game.spawns['Spawn1'].energy < Game.spawns['Spawn1'].energyCapacity) {
             else{
-            if(creep.transfer(Game.spawns['Spawn1'], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(Game.spawns['Spawn1']);
+            var targets = creep.room.find(FIND_STRUCTURES, {
+                    filter: (structure) => {
+                        return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) &&
+                            structure.energy < structure.energyCapacity;
+                    }
+            });
+
+        
+
+            if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE ) {
+                creep.moveTo(targets[0]);
             }
         }
+
+        var targets = creep.room.find(FIND_STRUCTURES, {
+                    filter: (structure) => {
+                        return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN) &&
+                            structure.energy < structure.energyCapacity;
+                    }
+            });
         
-        if(Game.spawns['Spawn1'].energy == Game.spawns['Spawn1'].energyCapacity){
+        if(Game.spawns['Spawn1'].energy == Game.spawns['Spawn1'].energyCapacity && targets.length == 0){
             //Spawn's enerty is maxed out put harvester to use and upgrade the conrollers
             creep.say('Swiching to upgrading')
             roleUpgrader.upgrade(creep);
