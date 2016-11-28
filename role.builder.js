@@ -1,6 +1,5 @@
 var roleBuilder = {
    run: function(creep) {
-	   console.log("builder run")
 	    if(creep.memory.building && creep.carry.energy == 0) {
             creep.memory.building = false;
             creep.say('harvesting');

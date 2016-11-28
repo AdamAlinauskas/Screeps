@@ -1,7 +1,7 @@
-var roleUpgrader = {
-
+var roleUpgrader = new function(){
+var me = this;
     /** @param {Creep} creep **/
-    run: function(creep) {
+    this.run = function(creep) {
 
         if(creep.memory.upgrading && creep.carry.energy == 0) {
             creep.memory.upgrading = false;
@@ -13,9 +13,7 @@ var roleUpgrader = {
 	    }
 
 	    if(creep.memory.upgrading) {
-            if(creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(creep.room.controller);
-            }
+            this.upgrade(creep);
         }
         else {
             var sources = creep.room.find(FIND_SOURCES);
@@ -23,14 +21,20 @@ var roleUpgrader = {
                 creep.moveTo(sources[0]);
             }
         }
-	},
+	};
+    
+    this.upgrade = function(creep){
+        if(creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(creep.room.controller);
+            }
+    }
 	
-	create: function(game){
+	this.create = function(game){
 	   var upgraders = _.filter(game.creeps,(creep)=>creep.memory.role === 'upgrader');
 	   if(upgraders.length < 3){
 	       game.spawns.Spawn1.createCreep([MOVE, CARRY, WORK],{role:'upgrader'})
 	   }
 	}
-};
+}();
 
 module.exports = roleUpgrader;
