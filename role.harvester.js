@@ -31,7 +31,7 @@ var roleHarvester = {
 		
 	create: function(game){
 	   var upgraders = _.filter(game.creeps,(creep)=>creep.memory.role === 'harvester');
-	    if(upgraders.length < 3){
+	    if(upgraders.length < 10){
 	        game.spawns.Spawn1.createCreep([MOVE, CARRY, WORK],{role:'harvester'})
 	    }
 	}
