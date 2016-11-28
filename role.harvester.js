@@ -37,7 +37,6 @@ var roleHarvester = {
                     }
             }).every(function(structure){return structure.energy == structure.energyCapacity});
 
-            console.log('max energy' + atMaxEnergy);
         
         if(atMaxEnergy){
             //Spawn's enerty is maxed out put harvester to use and upgrade the conrollers
