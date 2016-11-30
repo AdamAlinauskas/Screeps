@@ -31,14 +31,18 @@ module.exports.loop = function () {
 
     //Get number of extensions useful for creating screeps to know how many body parts.
     
-    var numberOfExtensions = 0;
+    var potentialEnergyStored = 0;
 
     if(Game.creeps.length > 1)
     {
-        var numberOfExtensions = creep.room.find(FIND_STRUCTURES, {
+        var energyStructures = creep.room.find(FIND_STRUCTURES, {
                         filter: (structure) => {
-                            return (structure.structureType == STRUCTURE_EXTENSION);
-                        }}).length;
+                            return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN);
+                        }});
+        
+        potentialEnergyStored = energyStructures.reduce((a,b)=>a.energyCapacity+b.energyCapacity);
+        
+
     }
 
     
@@ -46,14 +50,16 @@ module.exports.loop = function () {
     roleRepair.create(Game);
     roleBuilder.create(Game);
     roleUpgrader.create(Game);
-    roleHarvester.create(Game);
+    roleHarvester.create(Game,potentialEnergyStored);
     
 
      for(var name in Game.creeps) {
         var creep = Game.creeps[name];
+        
         if(creep.memory.role == 'harvester') {
             roleHarvester.run(creep);
         }
+
         if(creep.memory.role == 'upgrader') {
             roleUpgrader.run(creep);
         }
@@ -61,6 +67,7 @@ module.exports.loop = function () {
         if(creep.memory.role == 'builder') {
             roleBuilder.run(creep);
         }//attacker
+
         if(creep.memory.role == 'attacker') {
             roleAttacker.run(creep);
         }

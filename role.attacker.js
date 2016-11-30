@@ -9,12 +9,21 @@ var roleBuilder = {
         }
 	},
     create: function(game){
-        var creeps = _.filter(game.creeps,(creep)=>creep.memory.role === 'attacker');
-       //use harvesters to look for enemies and only create if you have atackers...   
-	    if(creeps.length < 0){
-            console.log('create attacker')
-	        game.spawns.Spawn1.createCreep([TOUGH,ATTACK,ATTACK,MOVE,MOVE],{role:'attacker'})
-	    }
+
+        if(game.creeps.length > 0){
+            var enemies = game.creeps[0].room.find(FIND_HOSTILE_CREEPS);
+            if(enemies.length > 0){
+                var creeps = _.filter(game.creeps,(creep)=>creep.memory.role === 'attacker');
+                //use harvesters to look for enemies and only create if you have atackers...   
+                if(creeps.length < 4){
+                    console.log('create attacker')
+                    //TOUGHT = 10 X 2 = 20
+                    //Attack = 80 X 2 = 160
+                    //MOVE = 50 X 3 = 150
+                    game.spawns.Spawn1.createCreep([TOUGH,TOUGH,ATTACK,ATTACK,MOVE,MOVE,MOVE],{role:'attacker'})
+                }
+            }
+        } 
     }
     
 };

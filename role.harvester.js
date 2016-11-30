@@ -46,10 +46,25 @@ var roleHarvester = {
       
 	},
 		
-	create: function(game){
+	create: function(game,potentialEnergyStored){
+        //TOUGHT = 10 X 0 = 0
+        //Attack = 80 X 0 = 0
+        //MOVE = 50 X 3 = 150
+        //CARRY = 50 X 3 = 150
+        //WORK = 100 X 2 = 200
+        //TOTAL = 500
+         
+
 	   var upgraders = _.filter(game.creeps,(creep)=>creep.memory.role === 'harvester');
+
+
 	    if(upgraders.length < 4){
-	        game.spawns.Spawn1.createCreep([MOVE, CARRY, WORK],{role:'harvester'})
+            var parts = [MOVE, CARRY, WORK];
+            if(potentialEnergyStored >=500){
+                parts = [MOVE,MOVE,CARRY,CARRY,WORK,WORK]
+            }
+
+	        game.spawns.Spawn1.createCreep(parts,{role:'harvester'})
 	    }
 	}
 };
