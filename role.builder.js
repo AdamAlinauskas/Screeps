@@ -29,14 +29,24 @@ var roleBuilder = {
 	    }
 	},
     create: function(game){
+		//TOUGHT = 10 X 0 = 0
+        //Attack = 80 X 0 = 0
+        //MOVE = 50 X 2 = 100
+        //CARRY = 50 X 2 = 100
+        //WORK = 100 X 2 = 200
+        //TOTAL = 400
+
         var creeps = _.filter(game.creeps,(creep)=>creep.memory.role === 'builder');
        //TODO find way to check for structures without using creeps
 	   //only create builders if there are things to build.
-	    var harvesters = _.filter(game.creeps,(creep)=>creep.memory.role === 'harvester');
-		if(harvesters.length >=1 && harvesters[0].room.find(FIND_CONSTRUCTION_SITES).length >= 1)
+	    
+		if(game.creeps.length >0 && game.creeps[0].room.find(FIND_CONSTRUCTION_SITES).length >= 1)
 			if(creeps.length < 3){
-				
-				game.spawns.Spawn1.createCreep([MOVE,CARRY, WORK],{role:'builder'})
+				   var parts = [MOVE, CARRY, WORK];
+            if(potentialEnergyStored >=400){
+                parts = [MOVE,MOVE,CARRY,CARRY,WORK,WORK];
+            }
+				game.spawns.Spawn1.createCreep(parts,{role:'builder'})
 			}
     }
     
