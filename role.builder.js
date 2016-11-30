@@ -28,7 +28,7 @@ var roleBuilder = {
             }
 	    }
 	},
-    create: function(game){
+    create: function(game,potentialEnergyStored){
 		//TOUGHT = 10 X 0 = 0
         //Attack = 80 X 0 = 0
         //MOVE = 50 X 2 = 100
