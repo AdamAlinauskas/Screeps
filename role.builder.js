@@ -33,7 +33,7 @@ var roleBuilder = {
        //TODO find way to check for structures without using creeps
 	   //only create builders if there are things to build.
 	    var harvesters = _.filter(game.creeps,(creep)=>creep.memory.role === 'harvester');
-		if(harvesters.length >1 && harvesters[0].room.find(FIND_CONSTRUCTION_SITES).length > 1)
+		if(harvesters.length >=1 && harvesters[0].room.find(FIND_CONSTRUCTION_SITES).length >= 1)
 			if(creeps.length < 3){
 				
 				game.spawns.Spawn1.createCreep([MOVE,CARRY, WORK],{role:'builder'})
