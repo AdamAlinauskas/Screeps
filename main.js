@@ -28,6 +28,19 @@ module.exports.loop = function () {
                 console.log('Clearing non-existing creep memory:', name);
             }
         }
+
+    //Get number of extensions useful for creating screeps to know how many body parts.
+    
+    var numberOfExtensions = 0;
+
+    if(Game.creeps.length > 1)
+    {
+        var numberOfExtensions = creep.room.find(FIND_STRUCTURES, {
+                        filter: (structure) => {
+                            return (structure.structureType == STRUCTURE_EXTENSION);
+                        }}).length;
+    }
+
     
     roleAttacker.create(Game);
     roleRepair.create(Game);
