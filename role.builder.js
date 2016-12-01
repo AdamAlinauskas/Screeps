@@ -40,7 +40,9 @@ var roleBuilder = {
        //TODO find way to check for structures without using creeps
 	   //only create builders if there are things to build.
 	    
-		if(game.creeps.length >0 && game.creeps[0].room.find(FIND_CONSTRUCTION_SITES).length >= 1)
+	   var someCreep = Game.creeps[Object.getOwnPropertyNames(Game.creeps)[0]]
+
+		if(game.creeps.length >0 && someCreep.room.find(FIND_CONSTRUCTION_SITES).length >= 1)
 			if(creeps.length < 3){
 				   var parts = [MOVE, CARRY, WORK];
             if(potentialEnergyStored >=400){

@@ -35,7 +35,7 @@ module.exports.loop = function () {
 
     if(Object.keys(Game.creeps).length > 1)
     {
-        var creep = Game.creeps[0];
+        var creep = Game.creeps[Object.getOwnPropertyNames(Game.creeps)[0]];
         var energyStructures = creep.room.find(FIND_STRUCTURES, {
                         filter: (structure) => {
                             return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN);
