@@ -10,7 +10,7 @@ var roleBuilder = {
 	},
     create: function(game){
 
-        if(game.creeps.length > 0){
+        if(Object.keys(Game.creeps).length > 0){
             var enemies = game.creeps[0].room.find(FIND_HOSTILE_CREEPS);
             if(enemies.length > 0){
                 var creeps = _.filter(game.creeps,(creep)=>creep.memory.role === 'attacker');

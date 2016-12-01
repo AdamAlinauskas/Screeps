@@ -33,7 +33,7 @@ module.exports.loop = function () {
     
     var potentialEnergyStored = 0;
 
-    if(Game.creeps.length > 1)
+    if(Object.keys(Game.creeps).length > 1)
     {
         var energyStructures = creep.room.find(FIND_STRUCTURES, {
                         filter: (structure) => {
