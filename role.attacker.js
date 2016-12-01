@@ -11,7 +11,8 @@ var roleBuilder = {
     create: function(game){
 
         if(Object.keys(Game.creeps).length > 0){
-            var enemies = game.creeps[0].room.find(FIND_HOSTILE_CREEPS);
+            var someCreep = Game.creeps[Object.getOwnPropertyNames(Game.creeps)[0]];
+            var enemies = someCreep.room.find(FIND_HOSTILE_CREEPS);
             if(enemies.length > 0){
                 var creeps = _.filter(game.creeps,(creep)=>creep.memory.role === 'attacker');
                 //use harvesters to look for enemies and only create if you have atackers...   
