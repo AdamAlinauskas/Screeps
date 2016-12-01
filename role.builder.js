@@ -42,7 +42,7 @@ var roleBuilder = {
 	    
 	   var someCreep = Game.creeps[Object.getOwnPropertyNames(Game.creeps)[0]]
 
-		if(game.creeps.length >0 && someCreep.room.find(FIND_CONSTRUCTION_SITES).length >= 1)
+		if(Object.keys(Game.creeps).length >0 && someCreep.room.find(FIND_CONSTRUCTION_SITES).length >= 1)
 			if(creeps.length < 3){
 				   var parts = [MOVE, CARRY, WORK];
             if(potentialEnergyStored >=400){
