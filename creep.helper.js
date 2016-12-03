@@ -15,7 +15,7 @@ var creepHelper = {
                 parts = [MOVE,MOVE,CARRY,CARRY,WORK,WORK];
             }
 
-	        game.spawns.Spawn1.createCreep(parts,{role:roleName})
+	        Game.spawns.Spawn1.createCreep(parts,{role:roleName})
 	    }
 	
     }
