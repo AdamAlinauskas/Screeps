@@ -1,6 +1,5 @@
 var creepHelper = {
-
-    CreateWorkerCreep: function{roleName, potentialEnergyStored}{
+    CreateWorkerCreep: function(roleName, potentialEnergyStored){
          //TOUGHT = 10 X 0 = 0
         //Attack = 80 X 0 = 0
         //MOVE = 50 X 2 = 100
@@ -23,4 +22,4 @@ var creepHelper = {
 }
 
 
-modules.exports = creepHelper;
+module.exports = creepHelper;

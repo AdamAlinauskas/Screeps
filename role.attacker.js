@@ -1,4 +1,4 @@
-var roleBuilder = {
+var roleAttacker = {
    run: function(creep) {
         var enemies= creep.room.find(FIND_HOSTILE_CREEPS);
           console.log("enmies at the gate"+ enemies.length)
@@ -29,4 +29,4 @@ var roleBuilder = {
     
 };
 
-module.exports = roleBuilder;
+module.exports = roleAttacker;
