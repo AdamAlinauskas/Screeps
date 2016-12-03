@@ -1,4 +1,5 @@
 var roleUpgrader = require('role.upgrader');
+var creepHelper = require('creep.helper');
 
 var roleHarvester = {
 
@@ -47,25 +48,7 @@ var roleHarvester = {
 	},
 		
 	create: function(game,potentialEnergyStored){
-        //TOUGHT = 10 X 0 = 0
-        //Attack = 80 X 0 = 0
-        //MOVE = 50 X 2 = 100
-        //CARRY = 50 X 2 = 100
-        //WORK = 100 X 2 = 200
-        //TOTAL = 400
-         
-
-	   var upgraders = _.filter(game.creeps,(creep)=>creep.memory.role === 'harvester');
-
-
-	    if(upgraders.length < 4){
-            var parts = [MOVE, CARRY, WORK];
-            if(potentialEnergyStored >=400){
-                parts = [MOVE,MOVE,CARRY,CARRY,WORK,WORK];
-            }
-
-	        game.spawns.Spawn1.createCreep(parts,{role:'harvester'})
-	    }
+        creepHelper.Create('harvester',potentialEnergyStored);
 	}
 };
 

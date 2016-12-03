@@ -47,10 +47,10 @@ module.exports.loop = function () {
     }
 
     
-    roleAttacker.create(Game);
-    roleRepair.create(Game);
-    roleBuilder.create(Game,potentialEnergyStored);
-    roleUpgrader.create(Game);
+    // roleAttacker.create(Game);
+    // roleRepair.create(Game);
+    // roleBuilder.create(Game,potentialEnergyStored);
+    // roleUpgrader.create(Game);
     roleHarvester.create(Game,potentialEnergyStored);
     
 
