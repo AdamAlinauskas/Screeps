@@ -48,7 +48,7 @@ var roleHarvester = {
 	},
 		
 	create: function(game,potentialEnergyStored){
-        creepHelper.Create('harvester',potentialEnergyStored);
+        creepHelper.CreateWorkerCreep('harvester',potentialEnergyStored);
 	}
 };
 
