@@ -41,7 +41,7 @@ module.exports.loop = function () {
                             return (structure.structureType == STRUCTURE_EXTENSION || structure.structureType == STRUCTURE_SPAWN);
                         }});
         
-        potentialEnergyStored = energyStructures.reduce((a,b)=>a.energyCapacity+b.energyCapacity);
+          potentialEnergyStored = energyStructures.map((a)=>a.energyCapacity).reduce((a,b)=>a+b);
         
 
     }
