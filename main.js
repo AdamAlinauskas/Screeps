@@ -49,7 +49,7 @@ module.exports.loop = function () {
     
     // roleAttacker.create(Game);
     // roleRepair.create(Game);
-    // roleBuilder.create(Game,potentialEnergyStored);
+     roleBuilder.create(potentialEnergyStored);
     // roleUpgrader.create(Game);
     roleHarvester.create(Game,potentialEnergyStored);
     

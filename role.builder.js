@@ -1,3 +1,5 @@
+var creepHelper = require('creep.helper');
+
 var roleBuilder = {
    run: function(creep) {
 	    if(creep.memory.building && creep.carry.energy == 0) {
@@ -28,30 +30,20 @@ var roleBuilder = {
             }
 	    }
 	},
-    create: function(game,potentialEnergyStored){
-		//TOUGHT = 10 X 0 = 0
-        //Attack = 80 X 0 = 0
-        //MOVE = 50 X 2 = 100
-        //CARRY = 50 X 2 = 100
-        //WORK = 100 X 2 = 200
-        //TOTAL = 400
-
-        var creeps = _.filter(game.creeps,(creep)=>creep.memory.role === 'builder');
-       //TODO find way to check for structures without using creeps
-	   //only create builders if there are things to build.
+    create: function(potentialEnergyStored){
+		//TODO find way to check for structures without using creeps
+		//only create builders if there are things to build.
 	    
-	   var someCreep = Game.creeps[Object.getOwnPropertyNames(Game.creeps)[0]]
+		var someCreep = Game.creeps[Object.getOwnPropertyNames(Game.creeps)[0]]
 
-		if(Object.keys(Game.creeps).length >0 && someCreep.room.find(FIND_CONSTRUCTION_SITES).length >= 1)
+		if(Object.keys(Game.creeps).length >0 && someCreep.room.find(FIND_CONSTRUCTION_SITES).length >= 1){
+	        var creeps = _.filter(Game.creeps,(creep)=>creep.memory.role === 'builder');
+			
 			if(creeps.length < 3){
-				   var parts = [MOVE, CARRY, WORK];
-            if(potentialEnergyStored >=400){
-                parts = [MOVE,MOVE,CARRY,CARRY,WORK,WORK];
-            }
-				game.spawns.Spawn1.createCreep(parts,{role:'builder'})
+				creepHelper.CreateWorkerCreep('builder',potentialEnergyStored);
 			}
-    }
-    
+		}
+    }   
 };
 
 module.exports = roleBuilder;

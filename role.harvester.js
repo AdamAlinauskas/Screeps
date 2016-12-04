@@ -52,11 +52,15 @@ var roleHarvester = {
             creep.say('Swiching to upgrading')
             roleUpgrader.upgrade(creep);
         }
-        
+
 	},
 		
 	create: function(game,potentialEnergyStored){
-        creepHelper.CreateWorkerCreep('harvester',potentialEnergyStored);
+        var creeps = _.filter(Game.creeps,(creep)=>creep.memory.role === 'harvester');
+
+        if(creeps.length < 4){
+            creepHelper.CreateWorkerCreep('harvester',potentialEnergyStored);
+        }
 	}
 };
 

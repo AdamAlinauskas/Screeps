@@ -9,26 +9,24 @@ var creepHelper = {
 
         //move(50) carry(50) work(100) = 200
          
-	   var creeps = _.filter(Game.creeps,(creep)=>creep.memory.role === roleName);
+	  
+	        
+        var partsToAppend = [MOVE,CARRY,WORK];
+        var selectedParts = [MOVE,CARRY,WORK];
+        var eneergyRequiredToCreateCreep = 200;
+        
+        while(eneergyRequiredToCreateCreep < potentialEnergyStored){
+            if(eneergyRequiredToCreateCreep + 200 > potentialEnergyStored)
+                break;
 
-	    if(creeps.length < 4){
-            
-            var partsToAppend = [MOVE,CARRY,WORK];
-            var selectedParts = [MOVE,CARRY,WORK];
-            var eneergyRequiredToCreateCreep = 200;
-            
-            while(eneergyRequiredToCreateCreep < potentialEnergyStored){
-                if(eneergyRequiredToCreateCreep + 200 > potentialEnergyStored)
-                    return;
+            selectedParts = selectedParts.concat(partsToAppend);
+            eneergyRequiredToCreateCreep = eneergyRequiredToCreateCreep + 200;
+        }
 
-                selectedParts = selectedParts.concat(partsToAppend);
-                eneergyRequiredToCreateCreep = eneergyRequiredToCreateCreep + 200;
-            }
-
-	        Game.spawns.Spawn1.createCreep(selectedParts,{role:roleName})
-	    }
-	
+        Game.spawns.Spawn1.createCreep(selectedParts,{role:roleName})
     }
+	
+    
 }
 
 
